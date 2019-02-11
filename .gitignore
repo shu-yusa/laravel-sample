@@ -1,0 +1,7 @@
+*.sw[po]
+*~
+env
+.vscode
+node_modules
+docker-compose.override.yml
+vendor

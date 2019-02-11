@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  nginx:
+    build: Dockerfiles/nginx/.
+    image: laravel-sample-nginx
+    container_name: laravel-sample-nginx
+    ports:
+      - 8888:80
+    volumes:
+      - ../app:/var/www/html
+  app:
+    build: Dockerfiles/app/.
+    image: laravel-sample-app
+    container_name: laravel-sample-app
+    volumes:
+      - ../app:/var/www/html
+  mysql:
+    build: Dockerfiles/mysql/.
+    image: laravel-sample-mysql
+    container_name: laravel-sample-mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+volumes:
+  mysql-data:
